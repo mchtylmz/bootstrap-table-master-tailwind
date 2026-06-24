@@ -121,32 +121,6 @@ Full CSS build:
 npm run css:build
 ```
 
-## Verification
-
-The Tailwind theme stage was checked with:
-
-```bash
-node --check src/themes/tailwind/bootstrap-table-tailwind.js
-node --check dist/themes/tailwind/bootstrap-table-tailwind.js
-node --check dist/themes/tailwind/bootstrap-table-tailwind.min.js
-```
-
-Additional checks confirmed:
-
-- Required Tailwind theme source and dist files exist.
-- No Bootstrap CSS import is used by the Tailwind demo/theme files.
-- No `@tailwind` or `@apply` exists in the distributed theme CSS.
-- Core Bootstrap Table JavaScript and extension logic were not changed for Tailwind behavior.
-
-## Git Commit
-
-This milestone can be committed with:
-
-```bash
-git add .
-git commit -m "Add Tailwind theme for Bootstrap Table"
-```
-
 ## License
 
 Bootstrap Table is released under the MIT License.

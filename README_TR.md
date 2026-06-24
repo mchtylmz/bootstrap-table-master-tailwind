@@ -121,32 +121,6 @@ Tam CSS build:
 npm run css:build
 ```
 
-## Doğrulama
-
-Tailwind theme aşaması şu komutlarla kontrol edilmiştir:
-
-```bash
-node --check src/themes/tailwind/bootstrap-table-tailwind.js
-node --check dist/themes/tailwind/bootstrap-table-tailwind.js
-node --check dist/themes/tailwind/bootstrap-table-tailwind.min.js
-```
-
-Ek kontroller:
-
-- Gerekli Tailwind theme source ve dist dosyaları mevcut.
-- Tailwind demo/theme dosyalarında Bootstrap CSS import'u yok.
-- Dağıtım CSS dosyalarında `@tailwind` veya `@apply` yok.
-- Core Bootstrap Table JavaScript ve extension logic Tailwind davranışı için değiştirilmedi.
-
-## Git Commit
-
-Bu aşama şu komutlarla commit edilebilir:
-
-```bash
-git add .
-git commit -m "Add Tailwind theme for Bootstrap Table"
-```
-
 ## Lisans
 
 Bootstrap Table MIT Lisansı ile yayınlanır.
