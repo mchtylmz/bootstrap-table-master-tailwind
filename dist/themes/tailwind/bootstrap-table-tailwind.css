@@ -1,0 +1,884 @@
+/**
+ * @author zhixin wen <wenzhixin2010@gmail.com>
+ * https://github.com/wenzhixin/bootstrap-table/
+ * theme: Tailwind CSS
+ */
+
+@layer components {
+  :root {
+    --bt-tailwind-bg: #fff;
+    --bt-tailwind-muted-bg: #f8fafc;
+    --bt-tailwind-hover-bg: #f1f5f9;
+    --bt-tailwind-selected-bg: #dbeafe;
+    --bt-tailwind-border: #e2e8f0;
+    --bt-tailwind-border-strong: #cbd5e1;
+    --bt-tailwind-text: #0f172a;
+    --bt-tailwind-muted-text: #64748b;
+    --bt-tailwind-primary: #2563eb;
+    --bt-tailwind-primary-hover: #1d4ed8;
+    --bt-tailwind-primary-soft: #eff6ff;
+    --bt-tailwind-danger: #dc2626;
+    --bt-tailwind-ring: 0 0 0 3px rgb(37 99 235 / 0.18);
+    --bt-tailwind-radius: 0.5rem;
+    --bt-tailwind-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.1);
+  }
+
+  .bootstrap-table.tailwind {
+    --bt-table-hover-bg: var(--bt-tailwind-hover-bg);
+
+    color: var(--bt-tailwind-text);
+    font-family:
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    line-height: 1.5;
+  }
+
+  .bootstrap-table.tailwind *,
+  .bootstrap-table.tailwind *::before,
+  .bootstrap-table.tailwind *::after {
+    box-sizing: border-box;
+  }
+
+  .bootstrap-table.tailwind .float-left {
+    float: left;
+  }
+
+  .bootstrap-table.tailwind .float-right {
+    float: right;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-toolbar::after,
+  .bootstrap-table.tailwind .fixed-table-pagination::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-toolbar {
+    align-items: center;
+    display: block;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-toolbar .bs-bars,
+  .bootstrap-table.tailwind .fixed-table-toolbar .search,
+  .bootstrap-table.tailwind .fixed-table-toolbar .columns {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-toolbar .search {
+    max-width: 20rem;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-toolbar .search input {
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind .columns {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .bootstrap-table.tailwind .columns-left {
+    margin-right: 0.375rem;
+  }
+
+  .bootstrap-table.tailwind .columns-right {
+    margin-left: 0.375rem;
+  }
+
+  .bootstrap-table.tailwind .btn-group,
+  .bootstrap-table.tailwind .input-group {
+    align-items: stretch;
+    display: inline-flex;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .bootstrap-table.tailwind .input-group {
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind .input-group .form-control {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .bootstrap-table.tailwind .input-group .btn {
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+  }
+
+  .bootstrap-table.tailwind .btn,
+  .bootstrap-table.tailwind .button,
+  .bootstrap-table.tailwind button.btn {
+    align-items: center;
+    appearance: none;
+    background: var(--bt-tailwind-bg);
+    border: 1px solid var(--bt-tailwind-border-strong);
+    border-radius: var(--bt-tailwind-radius);
+    color: #334155;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.875rem;
+    font-weight: 500;
+    gap: 0.375rem;
+    justify-content: center;
+    min-height: 2.25rem;
+    padding: 0.45rem 0.75rem;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      color 0.15s ease;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .bootstrap-table.tailwind .btn:hover,
+  .bootstrap-table.tailwind .button:hover {
+    background: var(--bt-tailwind-muted-bg);
+    border-color: #94a3b8;
+    color: var(--bt-tailwind-text);
+  }
+
+  .bootstrap-table.tailwind .btn:focus,
+  .bootstrap-table.tailwind .btn:focus-visible,
+  .bootstrap-table.tailwind .button:focus,
+  .bootstrap-table.tailwind .button:focus-visible,
+  .bootstrap-table.tailwind .form-control:focus,
+  .bootstrap-table.tailwind .form-select:focus,
+  .bootstrap-table.tailwind .dropdown-item:focus,
+  .bootstrap-table.tailwind .page-link:focus {
+    border-color: var(--bt-tailwind-primary);
+    box-shadow: var(--bt-tailwind-ring);
+    outline: 0;
+  }
+
+  .bootstrap-table.tailwind .btn.active,
+  .bootstrap-table.tailwind .btn:active,
+  .bootstrap-table.tailwind .button.active,
+  .bootstrap-table.tailwind .button:active {
+    background: var(--bt-tailwind-primary-soft);
+    border-color: var(--bt-tailwind-primary);
+    color: var(--bt-tailwind-primary);
+  }
+
+  .bootstrap-table.tailwind .btn:disabled,
+  .bootstrap-table.tailwind .btn.disabled,
+  .bootstrap-table.tailwind .button:disabled,
+  .bootstrap-table.tailwind .button.disabled {
+    background: #f8fafc;
+    border-color: var(--bt-tailwind-border);
+    color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.75;
+    pointer-events: none;
+  }
+
+  .bootstrap-table.tailwind .btn-primary,
+  .bootstrap-table.tailwind .btn.blue,
+  .bootstrap-table.tailwind .button.blue {
+    background: var(--bt-tailwind-primary);
+    border-color: var(--bt-tailwind-primary);
+    color: #fff;
+  }
+
+  .bootstrap-table.tailwind .btn-primary:hover,
+  .bootstrap-table.tailwind .btn.blue:hover,
+  .bootstrap-table.tailwind .button.blue:hover {
+    background: var(--bt-tailwind-primary-hover);
+    border-color: var(--bt-tailwind-primary-hover);
+    color: #fff;
+  }
+
+  .bootstrap-table.tailwind .btn-group > .btn,
+  .bootstrap-table.tailwind .btn-group > .btn-group > .btn {
+    border-radius: 0;
+    margin-left: -1px;
+  }
+
+  .bootstrap-table.tailwind .btn-group > .btn:first-child,
+  .bootstrap-table.tailwind .btn-group > .btn-group:first-child > .btn {
+    border-bottom-left-radius: var(--bt-tailwind-radius);
+    border-top-left-radius: var(--bt-tailwind-radius);
+    margin-left: 0;
+  }
+
+  .bootstrap-table.tailwind .btn-group > .btn:last-child,
+  .bootstrap-table.tailwind .btn-group > .btn-group:last-child > .btn {
+    border-bottom-right-radius: var(--bt-tailwind-radius);
+    border-top-right-radius: var(--bt-tailwind-radius);
+  }
+
+  .bootstrap-table.tailwind .dropdown,
+  .bootstrap-table.tailwind .keep-open,
+  .bootstrap-table.tailwind .page-list > div {
+    display: inline-block;
+    position: relative;
+  }
+
+  .bootstrap-table.tailwind .dropdown-toggle::after {
+    display: none;
+  }
+
+  .bootstrap-table.tailwind .dropdown-menu {
+    background: var(--bt-tailwind-bg);
+    border: 1px solid var(--bt-tailwind-border);
+    border-radius: var(--bt-tailwind-radius);
+    box-shadow: var(--bt-tailwind-shadow);
+    color: var(--bt-tailwind-text);
+    display: none;
+    left: 0;
+    list-style: none;
+    margin: 0.375rem 0 0;
+    max-height: 20rem;
+    min-width: 12rem;
+    overflow: auto;
+    padding: 0.35rem;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1001;
+  }
+
+  .bootstrap-table.tailwind .pull-right .dropdown-menu,
+  .bootstrap-table.tailwind .float-right .dropdown-menu,
+  .bootstrap-table.tailwind .columns-right .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  .bootstrap-table.tailwind .dropup .dropdown-menu {
+    bottom: 100%;
+    margin-bottom: 0.375rem;
+    margin-top: 0;
+    top: auto;
+  }
+
+  .bootstrap-table.tailwind .dropdown.show > .dropdown-menu,
+  .bootstrap-table.tailwind .dropdown-menu.show,
+  .bootstrap-table.tailwind .keep-open.show > .dropdown-menu,
+  .bootstrap-table.tailwind .page-list > div.show > .dropdown-menu {
+    display: block;
+  }
+
+  .bootstrap-table.tailwind .dropdown-item {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 0.375rem;
+    color: #334155;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.65rem;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind .dropdown-item:hover,
+  .bootstrap-table.tailwind .dropdown-item.active {
+    background: var(--bt-tailwind-primary-soft);
+    color: var(--bt-tailwind-primary);
+  }
+
+  .bootstrap-table.tailwind .dropdown-divider {
+    border-top: 1px solid var(--bt-tailwind-border);
+    height: 0;
+    margin: 0.35rem -0.35rem;
+    overflow: hidden;
+  }
+
+  .bootstrap-table.tailwind .form-control,
+  .bootstrap-table.tailwind .form-select,
+  .bootstrap-table.tailwind select,
+  .bootstrap-table.tailwind input[type="text"],
+  .bootstrap-table.tailwind input[type="search"],
+  .bootstrap-table.tailwind input[type="number"] {
+    appearance: none;
+    background: var(--bt-tailwind-bg);
+    border: 1px solid var(--bt-tailwind-border-strong);
+    border-radius: var(--bt-tailwind-radius);
+    color: var(--bt-tailwind-text);
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    min-height: 2.25rem;
+    padding: 0.45rem 0.75rem;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .bootstrap-table.tailwind .form-control::placeholder,
+  .bootstrap-table.tailwind input::placeholder {
+    color: #94a3b8;
+  }
+
+  .bootstrap-table.tailwind .form-select,
+  .bootstrap-table.tailwind select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, #64748b 50%),
+      linear-gradient(135deg, #64748b 50%, transparent 50%);
+    background-position:
+      calc(100% - 16px) 50%,
+      calc(100% - 11px) 50%;
+    background-repeat: no-repeat;
+    background-size: 5px 5px, 5px 5px;
+    padding-right: 2rem;
+  }
+
+  .bootstrap-table.tailwind input[type="checkbox"],
+  .bootstrap-table.tailwind input[type="radio"] {
+    accent-color: var(--bt-tailwind-primary);
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .bootstrap-table.tailwind .bs-checkbox {
+    text-align: center;
+  }
+
+  .bootstrap-table.tailwind .bs-checkbox label {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-container {
+    background: var(--bt-tailwind-bg);
+    border: 1px solid var(--bt-tailwind-border);
+    border-radius: var(--bt-tailwind-radius);
+    clear: both;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-container.fixed-height:not(.has-footer),
+  .bootstrap-table.tailwind .fixed-table-container.has-card-view {
+    border-bottom: 1px solid var(--bt-tailwind-border);
+  }
+
+  .bootstrap-table.tailwind .fixed-table-header,
+  .bootstrap-table.tailwind .fixed-table-footer {
+    background: var(--bt-tailwind-muted-bg);
+    overflow: hidden;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-body {
+    background: var(--bt-tailwind-bg);
+    height: 100%;
+    overflow: auto;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-border {
+    border-left: 1px solid var(--bt-tailwind-border);
+    border-right: 1px solid var(--bt-tailwind-border);
+  }
+
+  .bootstrap-table.tailwind .table {
+    background: var(--bt-tailwind-bg);
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--bt-tailwind-text);
+    font-size: 0.875rem;
+    margin-bottom: 0 !important;
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind .table th,
+  .bootstrap-table.tailwind .table td {
+    border-bottom: 1px solid var(--bt-tailwind-border);
+    padding: 0.75rem;
+    vertical-align: middle;
+  }
+
+  .bootstrap-table.tailwind .table thead th,
+  .bootstrap-table.tailwind .table tfoot th {
+    background: var(--bt-tailwind-muted-bg);
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+    vertical-align: bottom;
+  }
+
+  .bootstrap-table.tailwind .table thead th:focus,
+  .bootstrap-table.tailwind .table tfoot th:focus {
+    outline: 0;
+  }
+
+  .bootstrap-table.tailwind .table thead th .th-inner,
+  .bootstrap-table.tailwind .table tfoot th .th-inner {
+    overflow: hidden;
+    padding: 0.75rem;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    white-space: nowrap;
+  }
+
+  .bootstrap-table.tailwind .table thead th .sortable {
+    background-position: center right 0.5rem;
+    background-repeat: no-repeat;
+    background-size: 0.875rem 0.875rem;
+    cursor: pointer;
+    padding-right: 1.75rem !important;
+  }
+
+  .bootstrap-table.tailwind .table thead th .sortable:hover {
+    color: var(--bt-tailwind-primary);
+  }
+
+  .bootstrap-table.tailwind .table tbody tr {
+    background: var(--bt-tailwind-bg);
+    transition: background-color 0.15s ease;
+  }
+
+  .bootstrap-table.tailwind .table-hover tbody tr:hover,
+  .bootstrap-table.tailwind .table-hover tbody tr.hover-row {
+    background: var(--bt-tailwind-hover-bg);
+  }
+
+  .bootstrap-table.tailwind .table tbody tr.selected td,
+  .bootstrap-table.tailwind .table tbody tr.selected:hover td {
+    background: var(--bt-tailwind-selected-bg);
+  }
+
+  .bootstrap-table.tailwind .table tbody tr.no-records-found td {
+    color: var(--bt-tailwind-muted-text);
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .bootstrap-table.tailwind .table tbody tr.detail-view td {
+    background: #f8fafc;
+    color: #334155;
+  }
+
+  .bootstrap-table.tailwind .table .detail-icon {
+    color: var(--bt-tailwind-primary);
+    text-decoration: none;
+  }
+
+  .bootstrap-table.tailwind .table .card-view {
+    align-items: flex-start;
+    border-bottom: 1px solid var(--bt-tailwind-border);
+    display: flex;
+    gap: 1rem;
+    padding: 0.625rem 0;
+  }
+
+  .bootstrap-table.tailwind .table .card-view-title {
+    color: #475569;
+    display: inline-block;
+    font-weight: 600;
+    min-width: 30%;
+    text-align: left !important;
+    width: auto !important;
+  }
+
+  .bootstrap-table.tailwind .table .card-view-value {
+    color: var(--bt-tailwind-text);
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .bootstrap-table.tailwind .table-sm .th-inner,
+  .bootstrap-table.tailwind .table-sm th,
+  .bootstrap-table.tailwind .table-sm td {
+    padding: 0.375rem;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-loading {
+    align-items: center;
+    background: rgb(255 255 255 / 0.86);
+    bottom: 0;
+    color: var(--bt-tailwind-muted-text);
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    opacity: 0;
+    position: absolute;
+    transition:
+      visibility 0s,
+      opacity 0.15s ease-in-out;
+    visibility: hidden;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-loading.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .bootstrap-table.tailwind .loading-wrap {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .bootstrap-table.tailwind .loading-text {
+    margin-right: 0.375rem;
+  }
+
+  .bootstrap-table.tailwind .animation-wrap {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bootstrap-table.tailwind .animation-dot,
+  .bootstrap-table.tailwind .animation-wrap::before,
+  .bootstrap-table.tailwind .animation-wrap::after {
+    animation: bt-tailwind-loading 1.5s infinite;
+    background: var(--bt-tailwind-primary);
+    border-radius: 9999px;
+    content: "";
+    display: block;
+    height: 0.35rem;
+    margin: 0 0.2rem;
+    opacity: 0;
+    width: 0.35rem;
+  }
+
+  .bootstrap-table.tailwind .animation-dot {
+    animation-delay: 0.3s;
+  }
+
+  .bootstrap-table.tailwind .animation-wrap::after {
+    animation-delay: 0.6s;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-pagination {
+    color: var(--bt-tailwind-muted-text);
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-pagination > .pagination-detail,
+  .bootstrap-table.tailwind .fixed-table-pagination > .pagination {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .bootstrap-table.tailwind .pagination-info {
+    display: inline-flex;
+    line-height: 2.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .bootstrap-table.tailwind .page-list {
+    display: inline-block;
+  }
+
+  .bootstrap-table.tailwind ul.pagination {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bootstrap-table.tailwind .page-item {
+    display: inline-flex;
+  }
+
+  .bootstrap-table.tailwind .page-link {
+    align-items: center;
+    background: var(--bt-tailwind-bg);
+    border: 1px solid var(--bt-tailwind-border);
+    border-radius: 0.375rem;
+    color: #334155;
+    display: inline-flex;
+    font-size: 0.875rem;
+    justify-content: center;
+    min-height: 2.25rem;
+    min-width: 2.25rem;
+    padding: 0.375rem 0.625rem;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .bootstrap-table.tailwind .page-link:hover {
+    background: var(--bt-tailwind-muted-bg);
+    border-color: #94a3b8;
+    color: var(--bt-tailwind-text);
+  }
+
+  .bootstrap-table.tailwind .page-item.active .page-link,
+  .bootstrap-table.tailwind .page-link.active {
+    background: var(--bt-tailwind-primary);
+    border-color: var(--bt-tailwind-primary);
+    color: #fff;
+  }
+
+  .bootstrap-table.tailwind .page-item.disabled .page-link,
+  .bootstrap-table.tailwind .page-link.disabled,
+  .bootstrap-table.tailwind li.disabled a {
+    background: #f8fafc;
+    border-color: var(--bt-tailwind-border);
+    color: #94a3b8;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .bootstrap-table.tailwind li.page-intermediate a::before {
+    content: "\2190";
+  }
+
+  .bootstrap-table.tailwind li.page-intermediate a::after {
+    content: "\2192";
+  }
+
+  .bootstrap-table.tailwind.fullscreen {
+    background: var(--bt-tailwind-bg);
+    height: 100vh;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 100% !important;
+    z-index: 1050;
+  }
+
+  .bootstrap-table.tailwind .bt-tailwind-icon {
+    display: inline-block;
+    font-size: 1rem;
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    text-align: center;
+    width: 1em;
+  }
+
+  .bootstrap-table.tailwind .bt-tailwind-icon::before {
+    display: inline-block;
+  }
+
+  .bootstrap-table.tailwind .bt-tailwind-icon-columns::before { content: "\2630"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-copy::before { content: "\2398"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-export::before { content: "\21e9"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-filter-hide::before { content: "\25f1"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-filter-show::before { content: "\25f0"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-refresh::before { content: "\21bb"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-toggle-off::before { content: "\25a4"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-toggle-on::before { content: "\25a6"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-fullscreen::before { content: "\26f6"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-print::before { content: "\2399"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-search::before { content: "\2315"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-sort::before { content: "\2195"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-clear::before { content: "\00d7"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-plus::before { content: "+"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-minus::before { content: "\2212"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-page-down::before { content: "\25be"; }
+  .bootstrap-table.tailwind .bt-tailwind-icon-page-up::before { content: "\25b4"; }
+
+  .bootstrap-table.tailwind .caret {
+    border-left: 0.25rem solid transparent;
+    border-right: 0.25rem solid transparent;
+    border-top: 0.3rem solid currentColor;
+    display: inline-block;
+    height: 0;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    width: 0;
+  }
+
+  .bootstrap-table.tailwind .dropup .caret {
+    border-bottom: 0.3rem solid currentColor;
+    border-top: 0;
+  }
+
+  .bootstrap-table.tailwind .filter-control {
+    margin: 0.25rem 0.125rem;
+  }
+
+  .bootstrap-table.tailwind .no-filter-control {
+    height: 2.5rem;
+  }
+
+  .bootstrap-table.tailwind .ms-choice {
+    border: 0;
+  }
+
+  .bootstrap-table.tailwind .ms-parent > button:focus {
+    outline: 0;
+  }
+
+  .bootstrap-table.tailwind .page-jump-to {
+    display: inline-flex;
+    margin-left: 0.5rem;
+  }
+
+  .bootstrap-table.tailwind .page-jump-to input {
+    float: left;
+    margin-left: 0.375rem;
+    text-align: center;
+    width: 4.5rem;
+  }
+
+  .bootstrap-table.tailwind .fixed-columns,
+  .bootstrap-table.tailwind .fixed-columns-right {
+    background: var(--bt-tailwind-bg);
+    box-shadow: 0 0 0 1px var(--bt-tailwind-border);
+    box-sizing: border-box;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+
+  .bootstrap-table.tailwind .fixed-columns {
+    left: 0;
+  }
+
+  .bootstrap-table.tailwind .fixed-columns-right {
+    right: 0;
+  }
+
+  .bootstrap-table.tailwind .fixed-columns .fixed-table-body {
+    overflow: hidden !important;
+  }
+
+  .bootstrap-table.tailwind .fixed-columns-right .fixed-table-body {
+    overflow-x: hidden !important;
+  }
+
+  .bootstrap-table.tailwind .fix-sticky {
+    background: var(--bt-tailwind-bg);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+    overflow: hidden;
+    position: fixed !important;
+    z-index: 100;
+  }
+
+  .bootstrap-table.tailwind .fix-sticky table thead {
+    background: var(--bt-tailwind-bg);
+  }
+
+  .bootstrap-table.tailwind .fix-sticky table thead.thead-light {
+    background: var(--bt-tailwind-muted-bg);
+  }
+
+  .bootstrap-table.tailwind .fix-sticky table thead.thead-dark {
+    background: #0f172a;
+    color: #f8fafc;
+  }
+
+  .bootstrap-table.tailwind .reorder-rows-on-drag-class td {
+    background: #e0f2fe;
+    box-shadow:
+      0 1px 0 var(--bt-tailwind-border) inset,
+      0 -1px 0 var(--bt-tailwind-border) inset,
+      0 12px 18px -12px rgb(15 23 42 / 0.35);
+  }
+
+  .bootstrap-table.tailwind .table > tbody > tr.group-by.expanded,
+  .bootstrap-table.tailwind .table > tbody > tr.group-by.collapsed {
+    cursor: pointer;
+  }
+
+  .bootstrap-table.tailwind .table > tbody > tr.group-by td {
+    background: #f8fafc;
+    color: #334155;
+    font-weight: 600;
+  }
+
+  .bootstrap-table.tailwind .table > tbody > tr.hidden {
+    display: none;
+  }
+
+  .bootstrap-table.tailwind .custom-view,
+  .bootstrap-table.tailwind .detail-view {
+    color: var(--bt-tailwind-text);
+  }
+
+  .bootstrap-table.tailwind .copy-rows,
+  .bootstrap-table.tailwind .auto-refresh,
+  .bootstrap-table.tailwind .export,
+  .bootstrap-table.tailwind .mobile,
+  .bootstrap-table.tailwind .multiple-sort,
+  .bootstrap-table.tailwind .reorder-columns,
+  .bootstrap-table.tailwind .reorder-rows,
+  .bootstrap-table.tailwind .resizable,
+  .bootstrap-table.tailwind .treegrid,
+  .bootstrap-table.tailwind .addrbar,
+  .bootstrap-table.tailwind .pipeline,
+  .bootstrap-table.tailwind .natural-sorting {
+    color: inherit;
+  }
+
+  .bootstrap-table.tailwind div.fixed-table-scroll-inner {
+    height: 200px;
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind div.fixed-table-scroll-outer {
+    height: 150px;
+    left: 0;
+    overflow: hidden;
+    top: 0;
+    visibility: hidden;
+    width: 200px;
+  }
+}
+
+@keyframes bt-tailwind-loading {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootstrap-table.tailwind .animation-dot,
+  .bootstrap-table.tailwind .animation-wrap::before,
+  .bootstrap-table.tailwind .animation-wrap::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .bootstrap-table.tailwind .fixed-table-toolbar .search,
+  .bootstrap-table.tailwind .fixed-table-toolbar .columns,
+  .bootstrap-table.tailwind .fixed-table-pagination > .pagination,
+  .bootstrap-table.tailwind .fixed-table-pagination > .pagination-detail {
+    float: none !important;
+    max-width: none;
+    width: 100%;
+  }
+
+  .bootstrap-table.tailwind .columns {
+    display: flex;
+  }
+
+  .bootstrap-table.tailwind .fixed-table-pagination {
+    display: grid;
+    gap: 0.5rem;
+  }
+}

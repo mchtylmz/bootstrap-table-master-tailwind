@@ -1,0 +1,80 @@
+---
+layout: '@/layouts/SimpleLayout.astro'
+title: Tailwind
+description: A getting started guide for adding Bootstrap Table to a Tailwind CSS v4 project without Bootstrap CSS.
+group: themes
+toc: true
+---
+
+## Quick start
+
+The Tailwind theme gives Bootstrap Table a modern Tailwind-style light interface without requiring Bootstrap CSS. It keeps Bootstrap Table's DOM, JavaScript API, and `data-toggle="table"` usage unchanged.
+
+### CSS
+
+Copy-paste the stylesheet `<link>` into your `<head>`.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/themes/tailwind/bootstrap-table-tailwind.min.css">
+```
+
+### JS
+
+Place the following `<script>`s near the end of your pages. jQuery must come first, then Bootstrap Table, extensions, and the Tailwind theme JavaScript.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/bootstrap-table.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/themes/tailwind/bootstrap-table-tailwind.min.js"></script>
+```
+
+## Starter template
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/themes/tailwind/bootstrap-table-tailwind.min.css">
+
+    <title>Hello, Bootstrap Table!</title>
+  </head>
+  <body>
+    <table
+      data-toggle="table"
+      data-search="true"
+      data-pagination="true"
+      data-show-columns="true">
+      <thead>
+        <tr>
+          <th data-field="id" data-sortable="true">Item ID</th>
+          <th data-field="name" data-sortable="true">Item Name</th>
+          <th data-field="price" data-sortable="true">Item Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Item 1</td>
+          <td>$1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Item 2</td>
+          <td>$2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@[[config:currentVersion]]/dist/themes/tailwind/bootstrap-table-tailwind.min.js"></script>
+  </body>
+</html>
+```
+
+## Tailwind v4
+
+The source CSS is authored in `@layer components` and does not use `@tailwind base`, `@tailwind components`, or `@tailwind utilities`. The distributed CSS is ready for CDN use and does not contain `@apply`.
