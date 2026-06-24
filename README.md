@@ -4,6 +4,8 @@
 
 A Bootstrap Table theme package that adds a modern Tailwind CSS v4 inspired light theme without requiring Bootstrap CSS. The theme follows Bootstrap Table's existing theme architecture and can be used by importing only the Tailwind theme CSS and JavaScript files.
 
+This Tailwind theme is prepared for Bootstrap Table currently at version `v1.27.3`.
+
 ![Bootstrap Table Tailwind Theme Full Demo](Bootstrap-Table-Tailwind-Theme-Full-Demo-2026-06-24_15_43.png)
 
 ## Highlights
@@ -14,6 +16,7 @@ A Bootstrap Table theme package that adds a modern Tailwind CSS v4 inspired ligh
 - Theme-only JavaScript mapping for classes, icons, buttons, dropdowns, pagination and inputs.
 - Browser-ready `dist` CSS with no `@tailwind` directives and no `@apply`.
 - Demo coverage for search, pagination, show columns, refresh, toggle view, export, filter controls, sticky header and fixed columns.
+- Full demo uses the Turkish `tr-TR` locale to show localized Bootstrap Table labels.
 
 ## Added Files
 
@@ -50,6 +53,7 @@ The demo is split into realistic working scenarios:
 - Toolbar, search, pagination, show columns and export.
 - Filter control with sticky header.
 - Fixed columns with horizontal scrolling.
+- AJAX loading from `https://jsonplaceholder.typicode.com/comments`.
 
 ## Browser Usage
 

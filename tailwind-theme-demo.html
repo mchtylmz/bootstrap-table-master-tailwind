@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap Table Tailwind Theme Full Demo</title>
+  <title>Bootstrap Table Tailwind Teması Tam Demo</title>
 
   <link rel="stylesheet" href="dist/themes/tailwind/bootstrap-table-tailwind.css">
 
@@ -107,26 +107,26 @@
   <main>
     <div class="demo-header">
       <div>
-        <h1>Bootstrap Table Tailwind Theme</h1>
-        <p>Full working demo: toolbar, search, pagination, column menu, export, filter controls, sticky header and fixed columns.</p>
+        <h1>Bootstrap Table Tailwind Teması</h1>
+        <p>Tam çalışan demo: araç çubuğu, arama, sayfalama, kolon menüsü, dışa aktarma, filtreler, sabit başlık, sabit kolonlar ve AJAX veri.</p>
       </div>
-      <span class="demo-badge">No Bootstrap CSS</span>
+      <span class="demo-badge">Bootstrap CSS Yok</span>
     </div>
 
     <section class="demo-panel">
       <div class="section-header">
         <div>
-          <h2>Toolbar, Search, Pagination and Export</h2>
-          <p>Core table controls plus CSV/JSON/TXT export.</p>
+          <h2>Araç Çubuğu, Arama, Sayfalama ve Dışa Aktarma</h2>
+          <p>Temel tablo kontrolleri ve CSV/JSON/TXT dışa aktarma.</p>
         </div>
       </div>
       <ul class="helper-list">
-        <li>search</li>
-        <li>pagination</li>
-        <li>showColumns</li>
-        <li>showRefresh</li>
-        <li>showToggle</li>
-        <li>export</li>
+        <li>arama</li>
+        <li>sayfalama</li>
+        <li>kolon menüsü</li>
+        <li>yenile</li>
+        <li>görünüm değiştir</li>
+        <li>dışa aktar</li>
       </ul>
       <table id="demo-main"></table>
     </section>
@@ -134,14 +134,14 @@
     <section class="demo-panel">
       <div class="section-header">
         <div>
-          <h2>Filter Control and Sticky Header</h2>
-          <p>Column inputs/selects with a sticky cloned header while scrolling.</p>
+          <h2>Filtre Kontrolü ve Sabit Başlık</h2>
+          <p>Kaydırma sırasında sabit kalan başlık ile kolon input/select filtreleri.</p>
         </div>
       </div>
       <ul class="helper-list">
-        <li>filter-control</li>
-        <li>sticky-header</li>
-        <li>sortable columns</li>
+        <li>filtre kontrolü</li>
+        <li>sabit başlık</li>
+        <li>sıralanabilir kolonlar</li>
       </ul>
       <table id="demo-filter"></table>
     </section>
@@ -149,22 +149,39 @@
     <section class="demo-panel">
       <div class="section-header">
         <div>
-          <h2>Fixed Columns</h2>
-          <p>Horizontal scrolling table with the first column fixed.</p>
+          <h2>Sabit Kolonlar</h2>
+          <p>İlk kolonu sabit kalan yatay kaydırmalı tablo.</p>
         </div>
       </div>
       <ul class="helper-list">
-        <li>fixed-columns</li>
-        <li>height</li>
-        <li>horizontal scroll</li>
+        <li>sabit kolonlar</li>
+        <li>yükseklik</li>
+        <li>yatay kaydırma</li>
       </ul>
       <table id="demo-fixed"></table>
+    </section>
+
+    <section class="demo-panel">
+      <div class="section-header">
+        <div>
+          <h2>JSONPlaceholder ile AJAX Veri</h2>
+          <p>Yorum verilerini Bootstrap Table'ın <code>url</code> seçeneğiyle <code>https://jsonplaceholder.typicode.com/comments</code> adresinden yükler.</p>
+        </div>
+      </div>
+      <ul class="helper-list">
+        <li>ajax url</li>
+        <li>uzak JSON</li>
+        <li>istemci sayfalama</li>
+        <li>arama</li>
+      </ul>
+      <table id="demo-ajax"></table>
     </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.32.0/tableExport.min.js"></script>
   <script src="dist/bootstrap-table.min.js"></script>
+  <script src="dist/locale/bootstrap-table-tr-TR.min.js"></script>
   <script src="dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
   <script src="dist/extensions/export/bootstrap-table-export.min.js"></script>
   <script src="dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
@@ -187,42 +204,49 @@
     ];
 
     const money = value => `$${value.toLocaleString()}`;
+    const truncate = (value, row) => {
+      const text = String(value || '');
+      const shortText = text.length > 96 ? `${text.slice(0, 96)}...` : text;
+
+      return `<span title="${text.replace(/"/g, '&quot;')}">${shortText}</span>`;
+    };
 
     const baseColumns = [
       { field: 'id', title: 'ID', sortable: true },
-      { field: 'name', title: 'Name', sortable: true, filterControl: 'input' },
-      { field: 'region', title: 'Region', sortable: true, filterControl: 'select' },
+      { field: 'name', title: 'Ad', sortable: true, filterControl: 'input' },
+      { field: 'region', title: 'Bölge', sortable: true, filterControl: 'select' },
       { field: 'segment', title: 'Segment', filterControl: 'select' },
-      { field: 'status', title: 'Status', filterControl: 'select' },
-      { field: 'orders', title: 'Orders', sortable: true },
-      { field: 'revenue', title: 'Revenue', sortable: true, formatter: money },
-      { field: 'owner', title: 'Owner', filterControl: 'input' }
+      { field: 'status', title: 'Durum', filterControl: 'select' },
+      { field: 'orders', title: 'Sipariş', sortable: true },
+      { field: 'revenue', title: 'Gelir', sortable: true, formatter: money },
+      { field: 'owner', title: 'Sorumlu', filterControl: 'input' }
     ];
 
     const fixedColumns = [
       { field: 'id', title: 'ID', sortable: true },
-      { field: 'name', title: 'Account', sortable: true },
-      { field: 'region', title: 'Region', sortable: true },
+      { field: 'name', title: 'Hesap', sortable: true },
+      { field: 'region', title: 'Bölge', sortable: true },
       { field: 'segment', title: 'Segment' },
-      { field: 'status', title: 'Status' },
-      { field: 'orders', title: 'Orders', sortable: true },
-      { field: 'revenue', title: 'Revenue', sortable: true, formatter: money },
-      { field: 'owner', title: 'Owner' },
-      { field: 'q1', title: 'Q1 Score', sortable: true },
-      { field: 'q2', title: 'Q2 Score', sortable: true },
+      { field: 'status', title: 'Durum' },
+      { field: 'orders', title: 'Sipariş', sortable: true },
+      { field: 'revenue', title: 'Gelir', sortable: true, formatter: money },
+      { field: 'owner', title: 'Sorumlu' },
+      { field: 'q1', title: 'Q1 Skoru', sortable: true },
+      { field: 'q2', title: 'Q2 Skoru', sortable: true },
       { field: 'risk', title: 'Risk' },
-      { field: 'nextStep', title: 'Next Step' }
+      { field: 'nextStep', title: 'Sonraki Adım' }
     ];
 
     const fixedData = accounts.map((row, index) => ({
       ...row,
       q1: 70 + index * 2,
       q2: 82 + index,
-      risk: ['Low', 'Medium', 'High'][index % 3],
-      nextStep: ['Renewal', 'Expansion', 'Review', 'Follow-up'][index % 4]
+      risk: ['Düşük', 'Orta', 'Yüksek'][index % 3],
+      nextStep: ['Yenileme', 'Genişleme', 'İnceleme', 'Takip'][index % 4]
     }));
 
     $('#demo-main').bootstrapTable({
+      locale: 'tr-TR',
       data: accounts,
       columns: baseColumns.map(column => ({ ...column, filterControl: undefined })),
       search: true,
@@ -237,6 +261,7 @@
     });
 
     $('#demo-filter').bootstrapTable({
+      locale: 'tr-TR',
       data: accounts,
       columns: baseColumns,
       search: true,
@@ -248,6 +273,7 @@
     });
 
     $('#demo-fixed').bootstrapTable({
+      locale: 'tr-TR',
       data: fixedData,
       columns: fixedColumns,
       height: 360,
@@ -257,6 +283,25 @@
       fixedNumber: 1,
       pageSize: 8,
       pageList: [8, 12, 'All']
+    });
+
+    $('#demo-ajax').bootstrapTable({
+      locale: 'tr-TR',
+      url: 'https://jsonplaceholder.typicode.com/comments',
+      method: 'get',
+      columns: [
+        { field: 'postId', title: 'Post ID', sortable: true },
+        { field: 'id', title: 'Yorum ID', sortable: true },
+        { field: 'name', title: 'Ad', sortable: true },
+        { field: 'email', title: 'E-posta', sortable: true },
+        { field: 'body', title: 'İçerik', formatter: truncate }
+      ],
+      search: true,
+      pagination: true,
+      showColumns: true,
+      showRefresh: true,
+      pageSize: 10,
+      pageList: [10, 25, 50, 100, 'All']
     });
   </script>
 </body>

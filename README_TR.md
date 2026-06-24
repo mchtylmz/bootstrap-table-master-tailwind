@@ -4,6 +4,8 @@
 
 Bu çalışma, Bootstrap Table için Bootstrap CSS gerektirmeyen modern Tailwind CSS v4 görünümlü bir tema ekler. Tema, Bootstrap Table'ın mevcut theme mimarisini takip eder ve yalnızca Tailwind theme CSS/JS dosyaları import edilerek kullanılabilir.
 
+Bu Tailwind tema, Bootstrap Table'ın güncel `v1.27.3` sürümüne göre hazırlanmıştır.
+
 ![Bootstrap Table Tailwind Theme Full Demo](Bootstrap-Table-Tailwind-Theme-Full-Demo-2026-06-24_15_43.png)
 
 ## Öne Çıkanlar
@@ -14,6 +16,7 @@ Bu çalışma, Bootstrap Table için Bootstrap CSS gerektirmeyen modern Tailwind
 - Sadece theme katmanında sınıf, ikon, buton, dropdown, pagination ve input eşlemeleri yapılır.
 - `dist` CSS dosyaları doğrudan tarayıcıda kullanılabilir; `@tailwind` ve `@apply` içermez.
 - Demo; search, pagination, show columns, refresh, toggle view, export, filter controls, sticky header ve fixed columns özelliklerini gösterir.
+- Tam demo, Bootstrap Table etiketlerini Türkçe göstermek için `tr-TR` locale kullanır.
 
 ## Eklenen Dosyalar
 
@@ -50,6 +53,7 @@ Demo üç gerçek çalışma senaryosuna ayrılmıştır:
 - Toolbar, search, pagination, show columns ve export.
 - Filter control ile sticky header.
 - Horizontal scroll ile fixed columns.
+- `https://jsonplaceholder.typicode.com/comments` üzerinden AJAX veri yükleme.
 
 ## Tarayıcı Kullanımı
 
