@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Table Tailwind Theme Full Demo</title>
+
+  <link rel="stylesheet" href="dist/themes/tailwind/bootstrap-table-tailwind.css">
+
+  <style>
+    body {
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+    }
+
+    main {
+      margin: 0 auto;
+      max-width: 1220px;
+      padding: 32px 20px 56px;
+    }
+
+    .demo-header,
+    .section-header {
+      align-items: end;
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    .demo-header {
+      margin-bottom: 22px;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      color: #64748b;
+      margin: 6px 0 0;
+    }
+
+    .demo-badge {
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+
+    .demo-panel {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-top: 18px;
+      padding: 18px;
+    }
+
+    .demo-panel + .demo-panel {
+      margin-top: 24px;
+    }
+
+    .helper-list {
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 13px;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+
+    .helper-list li {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      list-style: none;
+      padding: 4px 8px;
+    }
+
+    @media (max-width: 720px) {
+      .demo-header,
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="demo-header">
+      <div>
+        <h1>Bootstrap Table Tailwind Theme</h1>
+        <p>Full working demo: toolbar, search, pagination, column menu, export, filters, sticky header, fixed columns and AJAX data.</p>
+      </div>
+      <span class="demo-badge">No Bootstrap CSS</span>
+    </div>
+
+    <section class="demo-panel">
+      <div class="section-header">
+        <div>
+          <h2>Toolbar, Search, Pagination and Export</h2>
+          <p>Core table controls plus CSV/JSON/TXT export.</p>
+        </div>
+      </div>
+      <ul class="helper-list">
+        <li>search</li>
+        <li>pagination</li>
+        <li>column menu</li>
+        <li>refresh</li>
+        <li>toggle view</li>
+        <li>export</li>
+      </ul>
+      <table id="demo-main"></table>
+    </section>
+
+    <section class="demo-panel">
+      <div class="section-header">
+        <div>
+          <h2>Filter Control and Sticky Header</h2>
+          <p>Column inputs/selects with a sticky cloned header while scrolling.</p>
+        </div>
+      </div>
+      <ul class="helper-list">
+        <li>filter control</li>
+        <li>sticky header</li>
+        <li>sortable columns</li>
+      </ul>
+      <table id="demo-filter"></table>
+    </section>
+
+    <section class="demo-panel">
+      <div class="section-header">
+        <div>
+          <h2>Fixed Columns</h2>
+          <p>Horizontal scrolling table with the first column fixed.</p>
+        </div>
+      </div>
+      <ul class="helper-list">
+        <li>fixed columns</li>
+        <li>height</li>
+        <li>horizontal scroll</li>
+      </ul>
+      <table id="demo-fixed"></table>
+    </section>
+
+    <section class="demo-panel">
+      <div class="section-header">
+        <div>
+          <h2>AJAX Data from JSONPlaceholder</h2>
+          <p>Loads comment records from <code>https://jsonplaceholder.typicode.com/comments</code> through Bootstrap Table's <code>url</code> option.</p>
+        </div>
+      </div>
+      <ul class="helper-list">
+        <li>ajax url</li>
+        <li>remote JSON</li>
+        <li>client pagination</li>
+        <li>search</li>
+      </ul>
+      <table id="demo-ajax"></table>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.32.0/tableExport.min.js"></script>
+  <script src="dist/bootstrap-table.min.js"></script>
+  <script src="dist/locale/bootstrap-table-en-US.min.js"></script>
+  <script src="dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+  <script src="dist/extensions/export/bootstrap-table-export.min.js"></script>
+  <script src="dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
+  <script src="dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+  <script src="dist/themes/tailwind/bootstrap-table-tailwind.min.js"></script>
+  <script>
+    const accounts = [
+      { id: 1001, name: 'Atlas Coffee', region: 'North', segment: 'Retail', status: 'Active', orders: 128, revenue: 42900, owner: 'Ada Lovelace' },
+      { id: 1002, name: 'Blue Harbor', region: 'West', segment: 'Wholesale', status: 'Active', orders: 96, revenue: 38400, owner: 'Grace Hopper' },
+      { id: 1003, name: 'Cedar Labs', region: 'East', segment: 'Enterprise', status: 'Review', orders: 74, revenue: 51250, owner: 'Katherine Johnson' },
+      { id: 1004, name: 'Delta Market', region: 'South', segment: 'Retail', status: 'Paused', orders: 63, revenue: 19870, owner: 'Dorothy Vaughan' },
+      { id: 1005, name: 'Evergreen Health', region: 'North', segment: 'Enterprise', status: 'Active', orders: 142, revenue: 67100, owner: 'Mary Jackson' },
+      { id: 1006, name: 'Forge Studio', region: 'West', segment: 'Retail', status: 'Active', orders: 88, revenue: 24300, owner: 'Margaret Hamilton' },
+      { id: 1007, name: 'Granite Works', region: 'East', segment: 'Wholesale', status: 'Review', orders: 57, revenue: 31760, owner: 'Annie Easley' },
+      { id: 1008, name: 'Horizon Foods', region: 'South', segment: 'Retail', status: 'Active', orders: 119, revenue: 35920, owner: 'Joan Clarke' },
+      { id: 1009, name: 'Ion Systems', region: 'North', segment: 'Enterprise', status: 'Paused', orders: 44, revenue: 46500, owner: 'Radia Perlman' },
+      { id: 1010, name: 'Juniper Supply', region: 'West', segment: 'Wholesale', status: 'Active', orders: 103, revenue: 29640, owner: 'Frances Allen' },
+      { id: 1011, name: 'Kite Logistics', region: 'East', segment: 'Enterprise', status: 'Active', orders: 135, revenue: 72810, owner: 'Evelyn Boyd' },
+      { id: 1012, name: 'Lumen Design', region: 'South', segment: 'Retail', status: 'Review', orders: 69, revenue: 21430, owner: 'Jean Bartik' }
+    ];
+
+    const money = value => `$${value.toLocaleString()}`;
+    const truncate = value => {
+      const text = String(value || '');
+      const shortText = text.length > 96 ? `${text.slice(0, 96)}...` : text;
+
+      return `<span title="${text.replace(/"/g, '&quot;')}">${shortText}</span>`;
+    };
+
+    const baseColumns = [
+      { field: 'id', title: 'ID', sortable: true },
+      { field: 'name', title: 'Name', sortable: true, filterControl: 'input' },
+      { field: 'region', title: 'Region', sortable: true, filterControl: 'select' },
+      { field: 'segment', title: 'Segment', filterControl: 'select' },
+      { field: 'status', title: 'Status', filterControl: 'select' },
+      { field: 'orders', title: 'Orders', sortable: true },
+      { field: 'revenue', title: 'Revenue', sortable: true, formatter: money },
+      { field: 'owner', title: 'Owner', filterControl: 'input' }
+    ];
+
+    const fixedColumns = [
+      { field: 'id', title: 'ID', sortable: true },
+      { field: 'name', title: 'Account', sortable: true },
+      { field: 'region', title: 'Region', sortable: true },
+      { field: 'segment', title: 'Segment' },
+      { field: 'status', title: 'Status' },
+      { field: 'orders', title: 'Orders', sortable: true },
+      { field: 'revenue', title: 'Revenue', sortable: true, formatter: money },
+      { field: 'owner', title: 'Owner' },
+      { field: 'q1', title: 'Q1 Score', sortable: true },
+      { field: 'q2', title: 'Q2 Score', sortable: true },
+      { field: 'risk', title: 'Risk' },
+      { field: 'nextStep', title: 'Next Step' }
+    ];
+
+    const fixedData = accounts.map((row, index) => ({
+      ...row,
+      q1: 70 + index * 2,
+      q2: 82 + index,
+      risk: ['Low', 'Medium', 'High'][index % 3],
+      nextStep: ['Renewal', 'Expansion', 'Review', 'Follow-up'][index % 4]
+    }));
+
+    $('#demo-main').bootstrapTable({
+      locale: 'en-US',
+      data: accounts,
+      columns: baseColumns.map(column => ({ ...column, filterControl: undefined })),
+      search: true,
+      pagination: true,
+      showColumns: true,
+      showRefresh: true,
+      showToggle: true,
+      showExport: true,
+      exportTypes: ['json', 'csv', 'txt'],
+      pageSize: 6,
+      pageList: [6, 10, 25, 'All']
+    });
+
+    $('#demo-filter').bootstrapTable({
+      locale: 'en-US',
+      data: accounts,
+      columns: baseColumns,
+      search: true,
+      pagination: true,
+      filterControl: true,
+      stickyHeader: true,
+      pageSize: 6,
+      pageList: [6, 10, 25, 'All']
+    });
+
+    $('#demo-fixed').bootstrapTable({
+      locale: 'en-US',
+      data: fixedData,
+      columns: fixedColumns,
+      height: 360,
+      search: true,
+      pagination: true,
+      fixedColumns: true,
+      fixedNumber: 1,
+      pageSize: 8,
+      pageList: [8, 12, 'All']
+    });
+
+    $('#demo-ajax').bootstrapTable({
+      locale: 'en-US',
+      url: 'https://jsonplaceholder.typicode.com/comments',
+      method: 'get',
+      columns: [
+        { field: 'postId', title: 'Post ID', sortable: true },
+        { field: 'id', title: 'Comment ID', sortable: true },
+        { field: 'name', title: 'Name', sortable: true },
+        { field: 'email', title: 'Email', sortable: true },
+        { field: 'body', title: 'Body', formatter: truncate }
+      ],
+      search: true,
+      pagination: true,
+      showColumns: true,
+      showRefresh: true,
+      pageSize: 10,
+      pageList: [10, 25, 50, 100, 'All']
+    });
+  </script>
+</body>
+</html>
