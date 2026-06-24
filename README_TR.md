@@ -85,6 +85,19 @@ Demo üç gerçek çalışma senaryosuna ayrılmıştır:
 </table>
 ```
 
+## Active Pagination Rengini Değiştirme
+
+Bu CSS'i Tailwind theme CSS dosyasından sonra ekleyin. İstediğiniz renk için hex değerlerini değiştirmeniz yeterli:
+
+```css
+.bootstrap-table.tailwind .page-item.active .page-link,
+.bootstrap-table.tailwind .page-link.active {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+```
+
 ## Bundler Kullanımı
 
 ```js

@@ -85,6 +85,19 @@ Load the Tailwind theme CSS first, then jQuery, Bootstrap Table, optional extens
 </table>
 ```
 
+## Change Active Pagination Color
+
+Add this CSS after the Tailwind theme CSS. Change the hex values to the color you want:
+
+```css
+.bootstrap-table.tailwind .page-item.active .page-link,
+.bootstrap-table.tailwind .page-link.active {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+```
+
 ## Bundler Usage
 
 ```js
