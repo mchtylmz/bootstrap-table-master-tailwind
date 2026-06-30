@@ -49,7 +49,7 @@
     "headr": "^0.0.4",
     "npm-run-all2": "^8.0.4",
     "rimraf": "^6.1.2",
-    "rollup": "^4.57.1",
+    "rollup": "^4.62.2",
     "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.97.3",
     "shelljs": "^0.10.0",
